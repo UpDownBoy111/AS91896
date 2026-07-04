@@ -830,20 +830,13 @@ class apple:
             )
             line_colour_text.pack(anchor=tk.W, expand=True, fill=tk.X)
 
-            while True:
-                try:
-                    if int(self.amount[0]) >= 2:
+            if int(self.amount[0]) >= 2:
                         
-                        # Adds break in text
-                        seperator = ttk.Separator(self.line_frame, orient=tk.HORIZONTAL)
-                        seperator.pack(fill=tk.X, pady=5, padx=10)
-                        
-                        break
-                    else:
-                        break
-                
-                except ValueError as e:
-                    print(f"Error seperatoring: {str(e)}")
+                # Adds break in text
+                seperator = ttk.Separator(self.line_frame, orient=tk.HORIZONTAL)
+                seperator.pack(fill=tk.X, pady=5, padx=10)
+            
+            # Updates variable
             number += 1
 
     def calculation_menu(self):
