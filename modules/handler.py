@@ -16,8 +16,42 @@ class FileHandler:
     Manages saving and exporting history data
     """
 
+    # Updates the next value in coordiate
+    def x_y_coords(x_iter, y_iter):
+        x_coord1 = next(x_iter)
+        x_coord2 = next(x_iter)
+        y_coord1 = next(y_iter)
+        y_coord2 = next(y_iter)
+        return x_coord1, x_coord2, y_coord1, y_coord2
+        
 
-    def export_history_to_csv(amount: int, coordinate: dict, parent_window = None):
+    def calc(x, y):
+        """
+        All calculations made in the calculator that is then able to be displayed and exported
+
+        Args:
+            x (int): The current x coordinate
+            y (int): The current y coordinate
+        
+        Returns:
+            int: All equation integers such as gradient, midpoint and distance
+        """
+
+        # Initialises variables
+        x_coord1, x_coord2, y_coord1, y_coord2 = FileHandler.x_y_coords(x, y)
+        distance = round(float(math.sqrt((x_coord2 - x_coord1)**2 + (y_coord2 - y_coord1)**2)), 2)
+        if  y_coord1 == y_coord2:
+            gradient = 0
+        elif x_coord1 == x_coord2:
+            gradient = 1
+        else:
+            gradient = round(float(y_coord2 - y_coord1)/ (x_coord2 - x_coord1), 4)
+        midpointx = round(float((x_coord1 + x_coord2)/2), 2)
+        midpointy= round(float((y_coord1 + y_coord2)/2), 2)
+        c = round(float(y_coord1 - round(float(gradient * x_coord1), 2)), 2)
+        return x_coord1, x_coord2, y_coord1, y_coord2, distance, gradient, midpointx, midpointy, c
+
+    def export_history_to_csv(amount: int, coordinate: dict, parent_window = None,):
         """
         Export calculation history to a csv file with file dialog for selecting location
 
@@ -37,29 +71,6 @@ class FileHandler:
         x_iter = iter(x)
         y_iter = iter(y)
         
-        # Updates the next value in coordiate
-        def x_y_coords():
-            x_coord1 = next(x_iter)
-            x_coord2 = next(x_iter)
-            y_coord1 = next(y_iter)
-            y_coord2 = next(y_iter)
-            return x_coord1, x_coord2, y_coord1, y_coord2
-
-        #Creates variables for calculation output
-        def calc():
-            
-            # Initialises variables
-            x_coord1, x_coord2, y_coord1, y_coord2 = x_y_coords()
-            distance = round(float(math.sqrt((x_coord2 - x_coord1)**2 + (y_coord2 - y_coord1)**2)), 2)
-            if x_coord1 == x_coord2 or y_coord1 == y_coord2:
-                gradient = 0
-            else:
-                gradient = round(float(y_coord2 - y_coord1)/ (x_coord2 - x_coord1), 4)
-            midpointx = round(float((x_coord1 + x_coord2)/2), 2)
-            midpointy= round(float((y_coord1 + y_coord2)/2), 2)
-            c = round(float(y_coord1 - round(float(gradient * x_coord1), 2)), 2)
-            return x_coord1, x_coord2, y_coord1, y_coord2, distance, gradient, midpointx, midpointy, c
-
         # Create default filename
         default_filename = f"Calculation_History_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
 
@@ -87,7 +98,7 @@ class FileHandler:
                 while int(amount) >= number:
                     try:
                         # Get variables for calculation history
-                        x_coord1, x_coord2, y_coord1, y_coord2, distance, gradient, midpointx, midpointy, c = calc()
+                        x_coord1, x_coord2, y_coord1, y_coord2, distance, gradient, midpointx, midpointy, c = FileHandler.calc(x_iter, y_iter)
                         
                         # Write calculation history in detail
                         writer.writerow([f"Line Number", f"{number}"])

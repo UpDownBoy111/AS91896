@@ -13,7 +13,7 @@ import os
 import config
 from modules.handler import FileHandler
 
-class apple: 
+class Apple: 
     """
     Main class that manages the calculator
     """
@@ -98,7 +98,8 @@ class apple:
         # Add instructions for the user
         self.start_description = self.WrappingLabel(
             self.start_frame,
-            text="This is a line calculator, it calculates the distance, midpoint, gradient, and equation of your line, it draws each line in a different colour on a grid once finished.",
+            text="This is a line calculator, it calculates the distance, midpoint, gradient, and equation of your line. " 
+            "It draws each line in a different colour on a grid once finished.",
         )
         self.start_description.pack(pady=(0, 20), fill=tk.X)
 
@@ -293,7 +294,9 @@ class apple:
                             number.set(number.get() - 1)
                             
                             # Updates display to previous state
-                            self.yinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'Y' coordinate for line {int(self.line_number.get())}. Current points: ({self.coordinate["x"][int(self.coordinate_increase.get())]}, y), (x, y)")
+                            self.yinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'Y' coordinate for line {int(self.line_number.get())}. " 
+                                "Current points: " 
+                                f"({self.coordinate["x"][int(self.coordinate_increase.get())]}, y), (x, y)")
                             
                             # Hides frame
                             x_container.pack_forget()
@@ -311,7 +314,10 @@ class apple:
                             coordinate_point.set(coordinate_point.get() + 1)
                             
                             # Updates display to previous state
-                            self.yinstructions.config(text=f"Please input {int(coordinate_point.get())}nd 'Y' coordinate for line {int(self.line_number.get())}. Current points: ({self.coordinate["x"][int(self.coordinate_increase.get())]}, {self.coordinate["y"][int(self.coordinate_increase.get())]}), ({self.coordinate["x"][int(self.coordinate_increase.get())+1]}, y)")
+                            self.yinstructions.config(text=f"Please input {int(coordinate_point.get())}nd 'Y' coordinate for line {int(self.line_number.get())}. " 
+                                "Current points: " 
+                                f"({self.coordinate["x"][int(self.coordinate_increase.get())]}, {self.coordinate["y"][int(self.coordinate_increase.get())]}), " 
+                                f"({self.coordinate["x"][int(self.coordinate_increase.get())+1]}, y)")
                             
                             # Hides frame
                             x_container.pack_forget()
@@ -332,12 +338,16 @@ class apple:
                             number.set(number.get() - 1)
                             
                             # Updates display to previous state
-                            self.yinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'Y' coordinate for line {int(self.line_number.get())}. Current points: ({self.coordinate["x"][int(self.coordinate_increase.get())]}, y), (x, y)")
+                            self.yinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'Y' coordinate for line {int(self.line_number.get())}. " 
+                                "Current points: " 
+                                f"({self.coordinate["x"][int(self.coordinate_increase.get())]}, y), (x, y)")
                         
                         else:
                             
                             # Updates display to previous state
-                            self.yinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'Y' coordinate for line {int(self.line_number.get())}. Current points: (x, y), (x, y)")
+                            self.yinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'Y' coordinate for line {int(self.line_number.get())}. " 
+                                "Current points: " 
+                                "(x, y), (x, y)")
                         
                         # Shows next frame
                         y_container.pack(fill="both")
@@ -375,7 +385,9 @@ class apple:
                         if int(coordinate_point.get()) == 2:
                             
                             # Updates display to previous state
-                            self.xinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'X' coordinate for line {int(self.line_number.get())}. Current points: ({self.coordinate["x"][int(self.coordinate_increase.get())]}, {self.coordinate["y"][int(self.coordinate_increase.get())]}), (x, y)")
+                            self.xinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'X' coordinate for line {int(self.line_number.get())}. " 
+                                "Current points: " 
+                                f"({self.coordinate["x"][int(self.coordinate_increase.get())]}, {self.coordinate["y"][int(self.coordinate_increase.get())]}), (x, y)")
                             
                             # Hides frame
                             y_container.pack_forget()
@@ -387,7 +399,9 @@ class apple:
                         else:
                             
                             # Updates display to previous state
-                            self.xinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'X' coordinate for line {int(self.line_number.get())}. Current points: (x, y), (x, y)")
+                            self.xinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'X' coordinate for line {int(self.line_number.get())}. " 
+                                "Current points: " 
+                                "(x, y), (x, y)")
                             
                             # Hides frame
                             y_container.pack_forget()
@@ -399,7 +413,9 @@ class apple:
                     elif int(self.line_number.get()) == 1 and int(coordinate_point.get()) == 2:
                         
                         # Updates display to previous state
-                        self.xinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'X' coordinate for line {int(self.line_number.get())}. Current points: ({self.coordinate["x"][int(self.coordinate_increase.get())]}, {self.coordinate["y"][int(self.coordinate_increase.get())]}), (x, y)")
+                        self.xinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'X' coordinate for line {int(self.line_number.get())}. " 
+                            "Current points: " 
+                            f"({self.coordinate["x"][int(self.coordinate_increase.get())]}, {self.coordinate["y"][int(self.coordinate_increase.get())]}), (x, y)")
                         
                         # Hides frame
                         y_container.pack_forget()
@@ -419,12 +435,16 @@ class apple:
                             coordinate_point.set(coordinate_point.get() - 1)
 
                             # Updates display to previous state
-                            self.xinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'X' coordinate for line {int(self.line_number.get())}. Current points: ({self.coordinate["x"][int(self.coordinate_increase.get())]}, {self.coordinate["y"][int(self.coordinate_increase.get())]}), (x, y)")
+                            self.xinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'X' coordinate for line {int(self.line_number.get())}. " 
+                                "Current points: " 
+                                f"({self.coordinate["x"][int(self.coordinate_increase.get())]}, {self.coordinate["y"][int(self.coordinate_increase.get())]}), (x, y)")
                         
                         else:
                             
                             # Updates display to previous state
-                            self.xinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'X' coordinate for line {int(self.line_number.get())}. Current points: (x, y), (x, y)")
+                            self.xinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'X' coordinate for line {int(self.line_number.get())}. " 
+                                "Current points: " 
+                                "(x, y), (x, y)")
                         
                             # Shows previous frame
                             x_container.pack(fill="both")
@@ -478,7 +498,9 @@ class apple:
                         coordinate_point.set(coordinate_point.get() - 1)
 
                         # Update display
-                        self.xinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'X' coordinate for line {int(self.line_number.get())}. Current points: (x, y), (x, y)")
+                        self.xinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'X' coordinate for line {int(self.line_number.get())}. " 
+                            "Current points: "
+                            "(x, y), (x, y)")
                     
                     else:
                         
@@ -486,7 +508,9 @@ class apple:
                         coordinate_point.set(coordinate_point.get() + 1)
 
                         # Update display
-                        self.xinstructions.config(text=f"Please input {int(coordinate_point.get())}nd 'X' coordinate for line {int(self.line_number.get())}. Current points: ({self.coordinate["x"][int(self.coordinate_increase.get())]}, {self.coordinate["y"][int(self.coordinate_increase.get())]}), (x, y)")
+                        self.xinstructions.config(text=f"Please input {int(coordinate_point.get())}nd 'X' coordinate for line {int(self.line_number.get())}. " 
+                            f"Current points: ({self.coordinate["x"][int(self.coordinate_increase.get())]}, " 
+                            f"{self.coordinate["y"][int(self.coordinate_increase.get())]}), (x, y)")
 
                 if (int(self.amount[0])*2) < int(number.get()):
                     
@@ -523,12 +547,17 @@ class apple:
                     if int(coordinate_point.get()) >= 2:
 
                         # Update display
-                        self.yinstructions.config(text=f"Please input {int(coordinate_point.get())}nd 'Y' coordinate for line {int(self.line_number.get())}. Current points: ({self.coordinate["x"][int(self.coordinate_increase.get())]}, {self.coordinate["y"][int(self.coordinate_increase.get())]}), ({self.coordinate["x"][int(self.coordinate_increase.get())+1]}, y)")
+                        self.yinstructions.config(text=f"Please input {int(coordinate_point.get())}nd 'Y' coordinate for line {int(self.line_number.get())}. " 
+                            "Current points: " 
+                            f"({self.coordinate["x"][int(self.coordinate_increase.get())]}, {self.coordinate["y"][int(self.coordinate_increase.get())]}), " 
+                            f"({self.coordinate["x"][int(self.coordinate_increase.get())+1]}, y)")
                     
                     else:
                         
                         # Update display
-                        self.yinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'Y' coordinate for line {int(self.line_number.get())}. Current Points: ({self.coordinate["x"][int(self.coordinate_increase.get())]}, y), (x, y)")
+                        self.yinstructions.config(text=f"Please input {int(coordinate_point.get())}st 'Y' coordinate for line {int(self.line_number.get())}. " 
+                            "Current Points: " 
+                            f"({self.coordinate["x"][int(self.coordinate_increase.get())]}, y), (x, y)")
                     
                     reset_image()
                     self.xcoordinate.delete(0, 'end')
@@ -678,29 +707,6 @@ class apple:
         big_number = 100000
         other_lines_number = 1
         lines_number = 100
-
-        # Updates the next value in coordiate
-        def x_y_coords():
-            x_coord1 = next(x_iter)
-            x_coord2 = next(x_iter)
-            y_coord1 = next(y_iter)
-            y_coord2 = next(y_iter)
-            return x_coord1, x_coord2, y_coord1, y_coord2
-        
-        #Creates variables for calculation output
-        def calc():
-
-            # Initalises variables
-            x_coord1, x_coord2, y_coord1, y_coord2 = x_y_coords()
-            distance = round(float(math.sqrt((x_coord2 - x_coord1)**2 + (y_coord2 - y_coord1)**2)), 2)
-            if x_coord1 == x_coord2 or y_coord1 == y_coord2:
-                gradient = 0
-            else:
-                gradient = round(float(y_coord2 - y_coord1)/ (x_coord2 - x_coord1), 4)
-            midpointx = round(float((x_coord1 + x_coord2)/2), 2)
-            midpointy= round(float((y_coord1 + y_coord2)/2), 2)
-            c = round(float(y_coord1 - round(float(gradient * x_coord1), 2)), 2)
-            return x_coord1, x_coord2, y_coord1, y_coord2, distance, gradient, midpointx, midpointy, c
         
         def draw_infinite_line(x_coord1: float, y_coord1: float, x_coord2: float, y_coord2: float):
             """
@@ -712,7 +718,7 @@ class apple:
                 x_coord2 (float): Second x point in line
                 y_coord2 (float): Second y point in line
             """
-
+            
             # Initalise variables
             dx = x_coord2 - x_coord1
             dy = -y_coord2 - -y_coord1
@@ -795,8 +801,10 @@ class apple:
 
         while int(self.amount[0]) >= number:
             
+            # Call from FileHander calc to get all calculation to display
+            x_coord1, x_coord2, y_coord1, y_coord2, distance, gradient, midpointx, midpointy, c = FileHandler.calc(x_iter, y_iter)
+            
             # Initialise variables
-            x_coord1, x_coord2, y_coord1, y_coord2, distance, gradient, midpointx, midpointy, c = calc()
             random_hex = generate_hex()
 
             # Creates frame
@@ -818,7 +826,12 @@ class apple:
             # Creates label for all calculations
             line_calculations = self.WrappingLabel(
                 self.results_frame,
-                text=f"Coordinates 1: ({x_coord1}, {y_coord1})\nCoordinates 2: ({x_coord2}, {y_coord2})\nGradient: {gradient}\nDistance: {distance}\nMidpoint: ({midpointx}, {midpointy})\nEquation of the line: y={gradient}x+{c}", 
+                text=(f"Coordinates 1: ({x_coord1}, {y_coord1})\n"
+                f"Coordinates 2: ({x_coord2}, {y_coord2})\n"
+                f"Gradient: {gradient}\n"
+                f"Distance: {distance}\n"
+                f"Midpoint: ({midpointx}, {midpointy})\n"
+                f"Equation of the line: y={gradient}x+{c}"), 
             )
             line_calculations.pack(anchor=tk.W, expand=True, fill=tk.X)
 
@@ -882,4 +895,4 @@ class apple:
             widget.destroy()
 
         # Runs main class to restart calculator
-        apple(self.root)
+        Apple(self.root)

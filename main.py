@@ -4,7 +4,7 @@ This file is the entry point for the calculator
 """
 
 import tkinter as tk
-from modules.apple import apple
+from modules.apple import Apple
 
 def main():
     """
@@ -16,7 +16,7 @@ def main():
     root = tk.Tk()
 
     # Initalise the calculator
-    apple_pie = apple(root)
+    apple_pie = Apple(root)
 
     # Start the main event loop
     root.mainloop()
