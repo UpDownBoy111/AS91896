@@ -16,7 +16,7 @@ class FileHandler:
     Manages saving and exporting history data
     """
 
-    # Updates the next value in coordiate
+    # Updates the next value in coordinate
     def x_y_coords(x_iter, y_iter):
         x_coord1 = next(x_iter)
         x_coord2 = next(x_iter)

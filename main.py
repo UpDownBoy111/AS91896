@@ -8,8 +8,8 @@ from modules.apple import Apple
 
 def main():
     """
-    Main function to intialise and run the calculator
-    Create the root Tkinker window and starts calculator
+    Main function to initialise and run the calculator
+    Create the root Tkinter window and starts calculator
     """
     
     # Create the root window
