@@ -42,14 +42,18 @@ class FileHandler:
         distance = round(float(math.sqrt((x_coord2 - x_coord1)**2 + (y_coord2 - y_coord1)**2)), 2)
         if  y_coord1 == y_coord2:
             gradient = 0
+            c = y_coord1
+            equation = f"y={c}"
         elif x_coord1 == x_coord2:
-            gradient = 1
+            gradient = None
+            equation = f"x={x_coord1}"
         else:
             gradient = round(float(y_coord2 - y_coord1)/ (x_coord2 - x_coord1), 4)
+            c = round(float(y_coord1 - round(float(gradient * x_coord1), 2)), 2)
+            equation = f"y={gradient}x+{c}"
         midpointx = round(float((x_coord1 + x_coord2)/2), 2)
         midpointy= round(float((y_coord1 + y_coord2)/2), 2)
-        c = round(float(y_coord1 - round(float(gradient * x_coord1), 2)), 2)
-        return x_coord1, x_coord2, y_coord1, y_coord2, distance, gradient, midpointx, midpointy, c
+        return x_coord1, x_coord2, y_coord1, y_coord2, distance, midpointx, midpointy, equation, gradient
 
     def export_history_to_csv(amount: int, coordinate: dict, parent_window = None,):
         """
@@ -98,7 +102,7 @@ class FileHandler:
                 while int(amount) >= number:
                     try:
                         # Get variables for calculation history
-                        x_coord1, x_coord2, y_coord1, y_coord2, distance, gradient, midpointx, midpointy, c = FileHandler.calc(x_iter, y_iter)
+                        x_coord1, x_coord2, y_coord1, y_coord2, distance, midpointx, midpointy, equation, gradient = FileHandler.calc(x_iter, y_iter)
                         
                         # Write calculation history in detail
                         writer.writerow([f"Line Number", f"{number}"])
@@ -108,7 +112,7 @@ class FileHandler:
                         writer.writerow([f"Gradient: {gradient}"])
                         writer.writerow([f"Distance: {distance}"])
                         writer.writerow([f"Midpoint: ({midpointx} {midpointy})"])
-                        writer.writerow([f"Equation of the line: y = {gradient}x + {c}"])
+                        writer.writerow([f"Equation of the line: {equation}"])
                         writer.writerow([])
                         
                         # Add 1 till loop stop

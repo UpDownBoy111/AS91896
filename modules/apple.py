@@ -802,7 +802,7 @@ class Apple:
         while int(self.amount[0]) >= number:
             
             # Call from FileHander calc to get all calculation to display
-            x_coord1, x_coord2, y_coord1, y_coord2, distance, gradient, midpointx, midpointy, c = FileHandler.calc(x_iter, y_iter)
+            x_coord1, x_coord2, y_coord1, y_coord2, distance, midpointx, midpointy, equation, gradient = FileHandler.calc(x_iter, y_iter)
             
             # Initialise variables
             random_hex = generate_hex()
@@ -831,7 +831,7 @@ class Apple:
                 f"Gradient: {gradient}\n"
                 f"Distance: {distance}\n"
                 f"Midpoint: ({midpointx}, {midpointy})\n"
-                f"Equation of the line: y={gradient}x+{c}"), 
+                f"Equation of the line: {equation}"), 
             )
             line_calculations.pack(anchor=tk.W, expand=True, fill=tk.X)
 
