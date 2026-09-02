@@ -24,7 +24,6 @@ class FileHandler:
         y_coord2 = next(y_iter)
         return x_coord1, x_coord2, y_coord1, y_coord2
         
-
     def calc(x, y):
         """
         All calculations made in the calculator that is then able to be displayed and exported
