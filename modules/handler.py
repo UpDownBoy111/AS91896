@@ -40,6 +40,8 @@ class FileHandler:
         # Initialises variables
         x_coord1, x_coord2, y_coord1, y_coord2 = FileHandler.x_y_coords(x, y)
         distance = round(float(math.sqrt((x_coord2 - x_coord1)**2 + (y_coord2 - y_coord1)**2)), 2)
+
+        # Checks if both y or x are same and appropriates the equation and calculations
         if  y_coord1 == y_coord2:
             gradient = 0
             c = y_coord1
@@ -50,7 +52,13 @@ class FileHandler:
         else:
             gradient = round(float(y_coord2 - y_coord1)/ (x_coord2 - x_coord1), 4)
             c = round(float(y_coord1 - round(float(gradient * x_coord1), 2)), 2)
-            equation = f"y={gradient}x+{c}"
+
+            # Sees if less than 0 and makes it clearer formatting
+            if c < 0:
+                equation = f"y={gradient}x{c}"
+            else:
+                equation = f"y={gradient}x+{c}"
+
         midpointx = round(float((x_coord1 + x_coord2)/2), 2)
         midpointy= round(float((y_coord1 + y_coord2)/2), 2)
         return x_coord1, x_coord2, y_coord1, y_coord2, distance, midpointx, midpointy, equation, gradient
