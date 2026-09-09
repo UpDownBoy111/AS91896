@@ -51,6 +51,7 @@ class FileHandler:
         else:
             gradient = (y_coord2 - y_coord1)/ (x_coord2 - x_coord1)
             c = round(float(y_coord1 - round(float(gradient * x_coord1), 2)), 2)
+            gradient = round(float(gradient), 4)
 
             # Sees if less than 0 and makes it clearer formatting
             if c < 0:

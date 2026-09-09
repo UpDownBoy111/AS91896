@@ -834,7 +834,7 @@ class Apple:
                 self.results_frame,
                 text=(f"Coordinates 1: ({x_coord1}, {y_coord1})\n"
                 f"Coordinates 2: ({x_coord2}, {y_coord2})\n"
-                f"Gradient: {round(float(gradient), 4)}\n"
+                f"Gradient: {gradient}\n"
                 f"Distance: {distance}\n"
                 f"Midpoint: ({midpointx}, {midpointy})\n"
                 f"Equation of the line: {equation}"), 
