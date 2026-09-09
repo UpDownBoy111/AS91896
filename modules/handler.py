@@ -49,7 +49,7 @@ class FileHandler:
             gradient = None
             equation = f"x={x_coord1}"
         else:
-            gradient = round(float(y_coord2 - y_coord1)/ (x_coord2 - x_coord1), 4)
+            gradient = (y_coord2 - y_coord1)/ (x_coord2 - x_coord1)
             c = round(float(y_coord1 - round(float(gradient * x_coord1), 2)), 2)
 
             # Sees if less than 0 and makes it clearer formatting

@@ -64,7 +64,7 @@ class Apple:
         # Create frames for different menus
         self.start_frame = ttk.Frame(self.root, padding=config.padding, style="TFrame")
         self.calculation_frame = ttk.Frame(self.root, padding=config.padding, style="TFrame")
-        self.line_canvas = tk.Canvas(self.calculation_frame, bg=config.line_result_colour, scrollregion=(10000, 10000, -10000, -10000), width=200, height=300)
+        self.line_canvas = tk.Canvas(self.calculation_frame, bg=config.line_result_colour, scrollregion=(-10000, -10000, 10000, 10000), width=200, height=300)
         self.history_frame = ttk.Frame(self.calculation_frame)
         self.line_image_frame = tk.Frame(self.calculation_frame)
 
@@ -454,10 +454,16 @@ class Apple:
             # Validates user input
             def user_valid_number(prompt):
                 try:
+                    value = float(prompt)
 
+                    # Ensures number is not infinite 
+                    if not math.isfinite(value):
+                        valid_number_frame.pack_forget()
+                        valid_number_frame.pack(pady=(0,80), fill=tk.X)
+        
                     # Return float of user input
-                    return float(prompt)
-                
+                    else:
+                        return value
                 except ValueError:
 
                     # If invalid show instructions
@@ -828,7 +834,7 @@ class Apple:
                 self.results_frame,
                 text=(f"Coordinates 1: ({x_coord1}, {y_coord1})\n"
                 f"Coordinates 2: ({x_coord2}, {y_coord2})\n"
-                f"Gradient: {gradient}\n"
+                f"Gradient: {round(float(gradient), 4)}\n"
                 f"Distance: {distance}\n"
                 f"Midpoint: ({midpointx}, {midpointy})\n"
                 f"Equation of the line: {equation}"), 
